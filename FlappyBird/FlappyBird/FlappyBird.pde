@@ -4,7 +4,7 @@ int birdYVelocity = 30;
 int gravity = 1;
 int pipeX = 780;
 int upPipeHeight = 370;
-int pipeGap = 60;
+int pipeGap = 200;
 int lowerY = upPipeHeight+pipeGap;
 int lPipeTop = 800-lowerY;
 PImage gameOver;
@@ -15,17 +15,23 @@ void draw(){
   ellipse(birdX, birdY, 50, 50);
   fill(0, 250, 0);
   rect(pipeX, 0, 20, upPipeHeight);
-  lowerY = upPipeHeight+pipeGap;
   rect(pipeX,lowerY, 20, lPipeTop);
   birdY+=gravity;
   pipeX-=5;
+  if(intersectsPipes()==true){
+    gameOver();
+    exit();
+  }
+  lowerY = upPipeHeight+pipeGap;
+  lPipeTop = 800-lowerY;
   teleportPipe();
-  intersectsPipes();
+  
 }
 
 void setup(){
   size(800,800);
   gameOver = loadImage("game_over.jpg");
+  gameOver.resize(800,800);
 }
 
 void mousePressed(){
@@ -42,15 +48,14 @@ void teleportPipe(){
 
 
 boolean intersectsPipes() { 
-         if (birdY < upPipeHeight && birdX > pipeX && birdX < (pipeX+20)){
-            return true; }
-        else if (birdY>lPipeTop && birdX > pipeX && birdX < (pipeX+20)) {
-            return true; }
+         if (birdY < upPipeHeight && birdX > pipeX && birdX < (pipeX+20)){ //<>//
+            return true; } //<>//
+        else if (birdY>lPipeTop && birdX > pipeX && birdX < (pipeX+20)) { //<>//
+            return true; } //<>//
         else { return false; 
       }
 }
 void gameOver() {
-  if(intersectsPipes()==true){
-    background(gameOver);
-  }
+   background(gameOver);
+
 }
