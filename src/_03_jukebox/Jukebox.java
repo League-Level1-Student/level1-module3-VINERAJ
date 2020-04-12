@@ -5,6 +5,8 @@ package _03_jukebox;
  */
 
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.InputStream;
@@ -12,6 +14,7 @@ import java.net.URL;
 
 import javax.swing.Icon;
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JPanel;
@@ -22,14 +25,17 @@ import javazoom.jl.player.advanced.AdvancedPlayer;
 /*   If you don't have javazoom.jar in your project, you can download it from here: http://bit.ly/javazoom
  *   Right click your project and add it as a JAR (Under Java Build Path > Libraries).*/
 
-public class Jukebox implements Runnable {
-
+public class Jukebox implements Runnable, ActionListener {
+	JButton button = new JButton();
+	JButton button2 = new JButton();
+	Song epic = new Song("epic.mp3");
+	Song scifi = new Song("scifi.mp3");
     public void run() {
 
 		// 1. Find an mp3 on your computer or on the Internet.
 		// 2. Create a Song object for that mp3
-Song epic = new Song("epic.mp3");
-epic.setDuration(60);
+epic.setDuration(1);
+scifi.setDuration(20);
 
 		// 3. Play the Song
 epic.play();
@@ -41,10 +47,13 @@ epic.play();
 		 * that was selected.
 		 */
 JFrame frame = new JFrame();
+frame.setVisible(true);
 JPanel panel = new JPanel();
 frame.add(panel);
 JLabel label = new JLabel();
-panel.add(loadImage("epic.png"));
+button.add(loadImage("epic.png"));
+button.addActionListener(this);
+button2.add(loadImage("scifi.jpg"));
     }
     
     
@@ -53,6 +62,19 @@ panel.add(loadImage("epic.png"));
 		URL imageURL = getClass().getResource(fileName);
 		Icon icon = new ImageIcon(imageURL);
 		return new JLabel(icon);
+	}
+
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		JButton buttonPressed = (JButton) e.getSource();
+		// TODO Auto-generated method stub
+		if(buttonPressed==button) {
+			epic.play();
+		}
+		else if(buttonPressed==button2) {
+			scifi.play();
+		}
 	}
 
 }
