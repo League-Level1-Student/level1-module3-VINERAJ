@@ -34,11 +34,11 @@ public class Jukebox implements Runnable, ActionListener {
 
 		// 1. Find an mp3 on your computer or on the Internet.
 		// 2. Create a Song object for that mp3
-epic.setDuration(1);
+epic.setDuration(20);
 scifi.setDuration(20);
 
 		// 3. Play the Song
-epic.play();
+//epic.play();
 		/*
 		 * 4. Create a user interface for your Jukebox so that the user can to
 		 * choose which song to play. You can use can use a different button for
@@ -53,7 +53,10 @@ frame.add(panel);
 JLabel label = new JLabel();
 button.add(loadImage("epic.png"));
 button.addActionListener(this);
+panel.add(button);
 button2.add(loadImage("scifi.jpg"));
+button2.addActionListener(this);
+panel.add(button2);
     }
     
     
@@ -70,9 +73,11 @@ button2.add(loadImage("scifi.jpg"));
 		JButton buttonPressed = (JButton) e.getSource();
 		// TODO Auto-generated method stub
 		if(buttonPressed==button) {
+			scifi.stop();
 			epic.play();
 		}
 		else if(buttonPressed==button2) {
+			epic.stop();
 			scifi.play();
 		}
 	}

@@ -71,7 +71,8 @@ public class MediaPalace {
 	/* This method will use your default mp3 player to play the song */
 	public void playMusicOnComputer(String fileName) {
 		File fileToPlay = new File(fileName);
-		try {
+
+try {
 			java.awt.Desktop.getDesktop().open(fileToPlay);
 		} catch (IOException e1) {
 			e1.printStackTrace();

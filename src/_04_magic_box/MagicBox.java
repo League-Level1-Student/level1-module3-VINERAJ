@@ -7,6 +7,8 @@ package _04_magic_box;
 
 import java.awt.Dimension;
 import java.awt.Graphics;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.awt.image.BufferedImage;
@@ -15,6 +17,7 @@ import java.io.IOException;
 
 import javax.imageio.ImageIO;
 import javax.swing.JFrame;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
@@ -53,6 +56,7 @@ public class MagicBox extends JPanel implements Runnable, MouseListener {
 		setPreferredSize(new Dimension(backgroundImage.getWidth(), backgroundImage.getHeight()));
 		frame.pack();
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.addMouseListener(this);
 		frame.setVisible(true);
 	}
 
@@ -73,7 +77,20 @@ public class MagicBox extends JPanel implements Runnable, MouseListener {
 	@Override
 	public void mouseClicked(MouseEvent e) {
 		// TODO Auto-generated method stub
-		
+		if(e.getX()<403&&e.getX()>200&&e.getY()<403&&e.getY()>200) {
+			System.out.println("I am running");
+			JOptionPane.showMessageDialog(null, "Your lucky numbers are 4, 16, 42, and -629");
+		}
+		else if(e.getX()>400&&e.getY()>400) {
+			JOptionPane.showMessageDialog(null, "Your lucky numbers are nothing. You're really unlucky.");
+		}
+		else if(e.getX()==0&&e.getY()==0) {
+			JOptionPane.showMessageDialog(null, "You are exetremely lucky! you don't need help from me!");
+		}
+		else {
+			System.out.println(e.getX());
+			System.out.println(e.getY());
+		}
 	}
 
 	@Override
@@ -99,6 +116,10 @@ public class MagicBox extends JPanel implements Runnable, MouseListener {
 		// TODO Auto-generated method stub
 		
 	}
+
+
+		
+	
 
 }
 
