@@ -29,10 +29,12 @@ public static void main(String[] args) {
 	 Location location4 = new Location(xLoc, yLoc+1);
 	 Flower flower2 = new Flower();
 	 world.add(location4, flower2);
-	 for(int i =0;i<100;i++) {
-		 Location location5 = new Location(i, i);
-		 Flower flower3 = new Flower();
-		 world.add(location5, flower3);
+	 for(int i =0;i<10;i++) {
+		 for(int j = 0;j<10;j++) {
+			 Location location5 = new Location(i, j);
+			 Flower flower3 = new Flower();
+			 world.add(location5, flower3);
+	 }
 	 }
 }
 }
