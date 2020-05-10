@@ -8,19 +8,21 @@ int pipeGap = 200;
 int lowerY = upPipeHeight+pipeGap;
 int lPipeTop = 800-lowerY;
 PImage gameOver;
+PImage bird;
 void draw(){
   background(58, 243, 158);
   fill(#E8FC12);
   stroke(1, 2, 3);
-  ellipse(birdX, birdY, 50, 50);
+  image(bird, birdX, birdY);
   fill(0, 250, 0);
   rect(pipeX, 0, 20, upPipeHeight);
   rect(pipeX,lowerY, 20, lPipeTop);
   birdY+=gravity;
   pipeX-=5;
+  println(birdX + " " + birdY + " " + pipeX + " " + upPipeHeight);
   if(intersectsPipes()==true){
     gameOver();
-    exit();
+    //exit();
   }
   lowerY = upPipeHeight+pipeGap;
   lPipeTop = 800-lowerY;
@@ -32,6 +34,8 @@ void setup(){
   size(800,800);
   gameOver = loadImage("game_over.jpg");
   gameOver.resize(800,800);
+  bird = loadImage("obamaprisim.jpg");
+  bird.resize(50, 50);
 }
 
 void mousePressed(){

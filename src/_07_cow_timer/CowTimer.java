@@ -28,8 +28,8 @@ public class CowTimer {
 		 * 2. Count down the minutes, print the current minute then sleep for the number of minutes
 		 * using Thread.sleep(int milliseconds). 
 		 */
-		for(int i = 0;i<minutes;i++) {
-			System.out.println(minutes);
+		for(int i = minutes;i>0;i--) {
+			System.out.println(i);
 			Thread.sleep(minutes);
 		}
 		/*
@@ -38,7 +38,8 @@ public class CowTimer {
 		 * from freesound.org, then drag it into the default package.
 		 */
 		System.out.println("here");
-		 playSound("moo.wav");
+		playSound("moo.wav");
+		System.out.println("not here");
 
 	}
 
