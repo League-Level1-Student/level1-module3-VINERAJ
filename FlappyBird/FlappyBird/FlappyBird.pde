@@ -19,10 +19,9 @@ void draw(){
   rect(pipeX,lowerY, 20, lPipeTop);
   birdY+=gravity;
   pipeX-=5;
-  println(birdX + " " + birdY + " " + pipeX + " " + upPipeHeight);
   if(intersectsPipes()==true){
     gameOver();
-    //exit();
+    exit();
   }
   lowerY = upPipeHeight+pipeGap;
   lPipeTop = 800-lowerY;
@@ -54,7 +53,7 @@ void teleportPipe(){
 boolean intersectsPipes() { 
          if (birdY < upPipeHeight && birdX > pipeX && birdX < (pipeX+20)){ //<>//
             return true; } //<>//
-        else if (birdY>lPipeTop && birdX > pipeX && birdX < (pipeX+20)) { //<>//
+        else if (birdY>lowerY && birdX > pipeX && birdX < (pipeX+20)) { //<>//
             return true; } //<>//
         else { return false; 
       }
