@@ -1,5 +1,8 @@
 int x = 400;
 int y = 300;
+Car car1 = new Car();
+car1.setParam(0, 0, 50, 2);
+car1.display();
 void draw(){
   background(4, 13, 123);
   fill(#0EED35);
@@ -53,5 +56,16 @@ class Car{
  private int siz;
  private int spid;
  
+ public void setParam(int crx, int cry, int siz, int spid){
+   this.crx = crx;
+   this.cry = cry;
+   this. siz = siz;
+   this.spid = spid;
+ }
  
+ void display()
+  {
+    fill(0,255,0);
+    rect(crx , cry,  siz, 50);
+  }
 }
